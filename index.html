@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<style>
+  body {
+    body {
+  background: linear-gradient(135deg, #e8eef9, #cbd5e1);
+  color: #172554;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.news-card {
+  background-color: #ffffff;
+  color: #172554;
+  border: 2px solid #d4af37;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 25px auto;
+  max-width: 500px;
+  box-shadow: 0 4px 12px #0002;
+}
+  }
+button {
+  background-color: #172554;
+  color: white;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2563eb;
+} 
+</style>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دنیای رئال مادرید</title>
+
+ <style>
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #101827;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      background: #18253a;
+      padding: 24px 12px;
+      border-bottom: 3px solid #d9b45b;
+    }
+
+    h1 {
+      color: #f3d47a;
+    }
+
+    nav {
+      padding: 16px;
+    }
+
+    nav a {
+      color: white;
+      margin: 8px;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 750px;
+      margin: 25px auto;
+      padding: 16px;
+    }
+
+    .card {
+      background: #202e43;
+      padding: 22px;
+      margin: 16px 0;
+      border-radius: 14px;
+    }
+
+    button {
+      background: #f3d47a;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    footer {
+      padding: 20px;
+      color: #cbd5e1;
+    }
+ h1 {
+  color: #f5d36b;
+  font-size: 36px;
+  text-shadow: 0 0 12px #c9a227;
+}
+
+body {
+  background: linear-gradient(135deg, #101827, #243b55);
+}
+.card {
+  background: linear-gradient(145deg, #202e43, #111827);
+  padding: 25px;
+  margin: 22px 0;
+  border-radius: 18px;
+  border: 1px solid #c9a227;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+} </style>
+</head>
+
+<body>
+  <header>
+    <h1>⚽ دنیای رئال مادرید</h1>
+   <img
+  src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg"
+  alt="لوگوی رئال مادرید"
+  width="120"
+>
+    <button onclick="alert('Hala Madrid! اخبار رئال به‌زودی!')">
+  مشاهده اخبار رئال مادرید ⚽
+</button>
+    <p>اخبار، بازیکنان و تاریخچه باشگاه</p>
+    <p lang="en" dir="ltr">
+      Real Madrid Fan Website
+    </p>
+  </header>
+
+  <nav>
+    <a href="#news">اخبار</a>
+    <a href="#players">بازیکنان</a>
+    <a href="#about">درباره ما</a>
+  </nav>
+
+  <main>
+    <section class="card" id="news">
+      <h2 id="newsTitle">آخرین اخبار</h2>
+      <p id="welcomeText">به بخش اخبار رئال مادرید خوش آمدید</p>
+      <p lang="en" dir="ltr">
+        Welcome to Real Madrid News!
+      </p>
+    </section>
+
+    <section class="card" id="players">
+      <h2>ستاره‌های رئال</h2>
+      <p>اینجا می‌توانی بازیکنان و اطلاعات آن‌ها را معرفی کنی.</p>
+    </section>
+
+    <section class="card" id="about">
+      <h2>درباره سایت</h2>
+      <p>این یک پروژه هواداری و مستقل است.</p>
+    </section>
+
+    <button id="languageButton">
+      English / فارسی
+    </button>
+ <section class="card">
+    <h2>📰 آخرین اخبار رئال مادرید</h2>
+ <img
+  src="https://placehold.co/700x300/18253a/f3d47a?text=HALA+MADRID"
+  alt="تصویر خبری رئال مادرید"
+  style="width: 100%; max-width: 700px; border-radius: 12px; margin: 15px auto;"
+>
+    <p>به‌زودی جدیدترین خبرهای رئال مادرید را اینجا بخوانید!</p>
+  <a href="https://eitaa.com/Real_Madrid_1_9_0_2"
+     target="_blank"
+     style="color: #f5d36b;">
+    مشاهده کانال ایتا
+  </a>
+</section>
+</main>
+
+  <footer>
+    سایت هواداری مستقل؛ بدون وابستگی رسمی به باشگاه
+  </footer>
+
+  <script>
+  const button = document.getElementById("languageButton");
+
+let english = false;
+
+button.addEventListener("click", function () {
+  english = !english;
+
+  document.documentElement.lang = english ? "en" : "fa";
+  document.documentElement.dir = english ? "ltr" : "rtl";
+
+  document.querySelector("header h1").textContent =
+    english ? "⚽ Real Madrid World" : "⚽ دنیای رئال مادرید";
+
+  document.querySelector("header p").textContent =
+    english ? "News, Players and Club History" :
+    "اخبار، بازیکنان و تاریخچه باشگاه";
+
+  document.querySelector("#news h2").textContent =
+    english ? "Latest News" : "آخرین اخبار رئال مادرید";
+
+ document.getElementById("newsTitle").textContent =
+    english ? "Real Madrid Stars" : "ستاره‌های رئال";
+
+  document.querySelector("#about h2").textContent =
+    english ? "About Us" : "درباره سایت";
+
+  button.textContent = english ? "فارسی" : "English";
+});
+  </script>
+<div class="news-card"
+  <h2>📰 آخرین اخبار رئال مادرید</h2>
+ <p>⚽ به‌روزترین اخبار رئال مادرید</p>
+ <img
+  src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Real_Madrid_CF.svg"
+  alt="نشان رئال مادرید"
+  width="100"
+
+<p>📰 نتایج بازی‌ها، اخبار بازیکنان و نقل‌وانتقالات</p>
+<a href="https://www.realmadrid.com/en-US">
+  وب‌سایت رسمی رئال مادرید
+</a>
+</div>
+
+<style>
+.news-card {
+  background: white;
+  margin: 25px auto;
+  padding: 20px;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px #0002;
+}
+.news-card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.news-card img:hover {
+  transform: scale(1.04);
+}
+
+.news-card h2 {
+  color: #172554;
+  margin-bottom: 18px;
+}
+@media (min-width: 900px) {
+  body {
+    display: flow-root;
+  }
+
+  .news-card {
+    box-sizing: border-box;
+  }
+}
+</style>
+<div class="news-card">
+  <h2 id="results-title">🏆 نتایج مسابقات</h2>
+  <p>⚪ رئال مادرید</p>
+ <p id="match-status">هنوز نتیجه‌ای ثبت نشده است.</p>
+</div>
+<button onclick="
+document.getElementById('results-title').textContent='🏆 نتایج مسابقات';
+document.getElementById('match-status').textContent='هنوز نتیجه‌ای ثبت نشده است.';
+document.documentElement.lang='fa';
+document.body.dir='rtl';
+">
+  فارسی 🇮🇷
+</button>
+
+<button onclick="
+document.getElementById('results-title').textContent='🏆 Match Results';
+document.getElementById('match-status').textContent='No match results yet.';
+document.documentElement.lang='en';
+document.body.dir='ltr';
+">
+  English 🇬🇧
+</button>
+</button>
+<div class="news-card">
+  <h2>⭐ کیلیان امباپه</h2>
+ <img
+  src="mbappe.jpg"
+  alt="عکس کیلیان امباپه"
+  width="200"
+  style="border-radius: 18px; border: 3px solid #d4af37; box-shadow: 0 4px 12px #0003;"
+>
+  <p>شماره پیراهن: ۱۰</p>
+  <p>تیم: رئال مادرید</p>
+  <p>یکی از ستاره‌های خط حمله رئال مادرید!</p>
+</div>
+<div class="news-card">
+  <h2>⭐ وینیسیوس جونیور</h2>
+
+  <img
+    src="vinicius.jpg"
+    alt="عکس وینیسیوس جونیور"
+    width="200"
+    style="border-radius: 18px; border: 3px solid #d4af37; box-shadow: 0 4px 12px #0003;"
+  >
+
+  <p>شماره پیراهن: ۷</p>
+  <p>تیم: رئال مادرید</p>
+  <p>یکی از ستاره‌های خط حمله رئال مادرید!</p>
+</div>
+<div class="news-card">
+  <h2>⭐ جود بلینگام</h2>
+
+  <img
+    src="bellingham.jpg"
+    alt="عکس جود بلینگام"
+    width="200"
+    style="border-radius: 18px; border: 3px solid #d4af37; box-shadow: 0 4px 12px #0003;"
+  >
+
+  <p>تیم: رئال مادرید</p>
+  <p>هافبک خلاق و گلزن رئال مادرید!</p>
+</div>
+</body>
+</html>
