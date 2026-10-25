@@ -16,11 +16,11 @@ body.light{--bg:#eef2f8;--panel:#fff;--panel2:#f6f8fc;--text:#12203a;--muted:#53
 .player-gallery{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:18px}
 .player-card{display:block;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:16px;text-align:center;transition:transform .18s,border-color .18s}
 .player-card:hover{transform:translateY(-3px);border-color:var(--gold)}
-.player-photo{height:190px;background:linear-gradient(180deg,#f7f8fc,#dce4ef);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
-.player-photo img{width:100%;height:100%;object-fit:contain;object-position:center bottom;padding:7px 7px 0}
+.player-photo{height:250px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.player-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center center;padding:4px;background:#fff;border:0}
 .player-card .player-meta{padding:10px 7px 12px}.player-card strong{display:block;color:var(--text);font-size:14px}.player-card small{color:var(--muted);font-size:12px}
-@media(max-width:850px){.player-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.player-photo{height:170px}}
-@media(max-width:520px){.player-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.player-photo{height:160px}}
+@media(max-width:850px){.player-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.player-photo{height:220px}}
+@media(max-width:520px){.player-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.player-photo{height:205px}}
 </style></head><body>
 <div class="top"><div class="wrap"><span>پایگاه هواداران رئال مادرید</span><a href="https://eitaa.com/Real_Madrid_1_9_0_2" target="_blank" rel="noopener">کانال ایتا ↗</a><span>نسخهٔ تازهٔ ۲۰۲۶/۲۷</span></div></div>
 <header><div class="wrap head"><a class="brand" href="#home"><img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="لوگوی رئال مادرید"><div><h1>رئال مادرید</h1><p>خانهٔ کهکشانی‌ها | HALA MADRID</p></div></a><nav class="nav"><a href="#squad">ترکیب و بازیکنان</a><a href="#fixtures">بازی‌های آینده</a><a href="#results">نتایج</a><a href="#news">اخبار</a><a href="#clubs">باشگاه‌ها</a><button id="languageBtn">EN / FA</button><button id="themeBtn">☼ حالت روشن</button></nav></div></header>
@@ -31,45 +31,148 @@ body.light{--bg:#eef2f8;--panel:#fff;--panel2:#f6f8fc;--text:#12203a;--muted:#53
 <section id="fixtures"><div class="section-title"><div><h2>📅 بازی‌های آیندهٔ رئال</h2><p>برنامهٔ منتشرشدهٔ فصل ۲۰۲۶/۲۷؛ ساعت‌ها به وقت اروپای مرکزی و ممکن است تغییر کنند.</p></div><span class="pill">برنامهٔ مسابقات</span></div><div class="grid" id="fixtureGrid"></div><p class="notice">منبع برنامه: وب‌سایت رسمی رئال مادرید و لالیگا. برای تغییر ساعت یا تاریخ، منبع رسمی را بررسی کن.</p></section>
 <section id="results"><div class="section-title"><div><h2>⚽ نتایج مسابقات</h2><p>اگر اتصال سرویس نتایج در دسترس باشد، مسابقات و نتیجه‌ها بارگذاری می‌شوند.</p></div><span class="pill" id="resultStatus">در انتظار بارگذاری</span></div><div class="toolbar"><button id="refreshResults">↻ به‌روزرسانی نتایج</button></div><div class="result-list" id="resultGrid"><div class="empty">برای دریافت نتایج، روی «به‌روزرسانی نتایج» بزن.</div></div><p class="notice">نتایج زنده به سرویس دادهٔ فوتبال و محدودیت‌های آن وابسته است؛ اگر سرویس در دسترس نباشد، از لینک‌های رسمی استفاده کن.</p></section>
 <section id="news"><div class="section-title"><div><h2>📰 بخش اخبار</h2><p>پیوند مستقیم به تازه‌ترین خبرها از منابع معتبر.</p></div></div><div class="news"><a class="card" href="https://www.realmadrid.com/en-US/news/football/first-team/latest-news" target="_blank" rel="noopener"><div class="symbol">📰</div><h3>آخرین اخبار رئال مادرید</h3><p>خبرها، مصاحبه‌ها و اطلاعیه‌های تیم اول در وب‌سایت رسمی.</p></a><a class="card" href="https://www.realmadrid.com/en-US/football/first-team" target="_blank" rel="noopener"><div class="symbol">👑</div><h3>بازیکنان تیم اول</h3><p>فهرست بازیکنان و اطلاعات رسمی تیم.</p></a><a class="card" href="https://www.realmadrid.com/en-US/football/first-team/schedule" target="_blank" rel="noopener"><div class="symbol">🏟️</div><h3>برنامه و نتایج رسمی</h3><p>بررسی مسابقات و تغییرات برنامه در منبع رسمی.</p></a></div></section>
-<section id="clubs"><div class="section-title"><div><h2>🛡️ باشگاه‌های فوتبال</h2><p>جست‌وجو میان باشگاه‌های شناخته‌شده؛ لوگوها از منابع تصویری عمومی بارگذاری می‌شوند.</p></div></div><div class="toolbar"><input id="clubSearch" placeholder="نام باشگاه را جست‌وجو کن..." aria-label="جست‌وجوی باشگاه"><button id="clearSearch">پاک کردن</button></div><div class="clubs" id="clubGrid"></div><p class="notice">اگر لوگویی از منبعش بارگذاری نشود، نشان متنی جایگزین نمایش داده می‌شود. این فهرست، همهٔ باشگاه‌های جهان را شامل نمی‌شود.</p></section>
+<section id="clubs"><div class="section-title"><div><h2>🛡️ باشگاه‌های فوتبال</h2><p>جست‌وجو میان باشگاه‌های شناخته‌شده؛ برای هر باشگاه چند منبع تصویر در نظر گرفته شده است.</p></div></div><div class="toolbar"><input id="clubSearch" placeholder="نام باشگاه را جست‌وجو کن..." aria-label="جست‌وجوی باشگاه"><button id="clearSearch">پاک کردن</button></div><div class="clubs" id="clubGrid"></div><p class="notice">اگر لوگویی از منبعش بارگذاری نشود، نشان متنی جایگزین نمایش داده می‌شود. این فهرست، همهٔ باشگاه‌های جهان را شامل نمی‌شود.</p></section>
 <section><div class="section-title"><div><h2>🔗 لینک‌های رسمی</h2><p>برای اطلاعات دقیق و به‌روز.</p></div></div><div class="grid"><a class="card" href="https://www.realmadrid.com/" target="_blank" rel="noopener">وب‌سایت رسمی رئال مادرید ↗</a><a class="card" href="https://www.laliga.com/en-US/clubs/real-madrid/next-matches" target="_blank" rel="noopener">برنامهٔ بازی‌ها در لالیگا ↗</a><a class="card" href="https://www.uefa.com/uefachampionsleague/clubs/50051--real-madrid/matches/" target="_blank" rel="noopener">بازی‌های لیگ قهرمانان ↗</a></div></section>
 </main><footer class="footer"><div class="wrap"><span>ساخته‌شده برای هواداران رئال مادرید • HALA MADRID!</span><span><a href="https://eitaa.com/Real_Madrid_1_9_0_2" target="_blank" rel="noopener">کانال ایتا</a> · <a href="https://www.realmadrid.com/" target="_blank" rel="noopener">وب‌سایت رسمی</a></span></div></footer><div class="toast" id="toast"></div>
 <script>
 const RM='https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg';
 
 const playerPhotos = [
-['Thibaut Courtois','1','Goalkeeper','thibaut-courtois','COURTOIS_POSE_1500X2000'],
-['Andriy Lunin','13','Goalkeeper','andriy-lunin','LUNIN_POSE_1500X2000'],
-['Raúl Asencio','2','Defender','raul-asencio','ASENCIO_POSE_1500X2000'],
-['Éder Militão','3','Defender','eder-militao','MILITAO_POSE_1500X2000'],
-['Dean Huijsen','4','Defender','dean-huijsen','HUIJSEN_POSE_1500X2000'],
-['Trent Alexander-Arnold','12','Defender','trent-alexander-arnold','TRENT_POSE_1500X2000'],
-['Ibrahima Konaté','16','Defender','ibrahima-konate','KONATE_POSE_1500X2000'],
-['Marc Cucurella','17','Defender','marc-cucurella','CUCURELLA_POSE_1500X2000'],
-['Álvaro Carreras','18','Defender','alvaro-carreras','CARRERAS_POSE_1500X2000'],
-['Antonio Rüdiger','22','Defender','antonio-rudiger','RUDIGER_POSE_1500X2000'],
-['Ferland Mendy','23','Defender','ferland-mendy','MENDY_POSE_1500X2000'],
-['Denzel Dumfries','24','Defender','denzel-dumfries','DUMFRIES_POSE_1500X2000'],
-['Jude Bellingham','5','Midfielder','jude-bellingham','BELLINGHAM_POSE_1500X2000'],
-['Eduardo Camavinga','6','Midfielder','eduardo-camavinga','CAMAVINGA_POSE_1500X2000'],
-['Federico Valverde','8','Midfielder','federico-valverde','VALVERDE_POSE_1500X2000'],
-['Aurélien Tchouaméni','14','Midfielder','aurelien-tchouameni','TCHOUAMENI_POSE_1500X2000'],
-['Arda Güler','15','Midfielder','arda-guler','ARDA_GULER_POSE_1500X2000'],
-['Bernardo Silva','20','Midfielder','bernardo-silva','BERNARDO_SILVA_POSE_1500X2000'],
-['Thiago','27','Midfielder','thiago-pitarch','THIAGO_POSE_1500X2000'],
-['Vinícius Júnior','7','Forward','vinicius-junior','VINI_JR_POSE_1500X2000'],
-['Endrick','9','Forward','endrick','ENDRICK_POSE_1500X2000'],
-['Kylian Mbappé','10','Forward','kylian-mbappe','MBAPPE_POSE_1500X2000'],
-['Rodrygo','11','Forward','rodrygo','RODRYGO_POSE_1500X2000'],
-['Carlos Espí','19','Forward','carlos-espi','CARLOS_ESPI_POSE_1500X2000'],
-['Brahim Díaz','21','Forward','brahim-diaz','BRAHIM_POSE_1500X2000'],
-['Yan Diomande','25','Forward','yan-diomande','DIOMANDE_POSE_1500X2000']
+['Thibaut Courtois','1','Goalkeeper','thibaut-courtois'],
+['Andriy Lunin','13','Goalkeeper','andriy-lunin'],
+['Raúl Asencio','2','Defender','raul-asencio'],
+['Éder Militão','3','Defender','eder-militao'],
+['Dean Huijsen','4','Defender','dean-huijsen'],
+['Trent Alexander-Arnold','12','Defender','trent-alexander-arnold'],
+['Ibrahima Konaté','16','Defender','ibrahima-konate'],
+['Marc Cucurella','17','Defender','marc-cucurella'],
+['Álvaro Carreras','18','Defender','alvaro-carreras'],
+['Antonio Rüdiger','22','Defender','antonio-rudiger'],
+['Ferland Mendy','23','Defender','ferland-mendy'],
+['Denzel Dumfries','24','Defender','denzel-dumfries'],
+['Jude Bellingham','5','Midfielder','jude-bellingham'],
+['Eduardo Camavinga','6','Midfielder','eduardo-camavinga'],
+['Federico Valverde','8','Midfielder','federico-valverde'],
+['Aurélien Tchouaméni','14','Midfielder','aurelien-tchouameni'],
+['Arda Güler','15','Midfielder','arda-guler'],
+['Bernardo Silva','20','Midfielder','bernardo-silva'],
+['Thiago Pitarch','27','Midfielder','thiago-pitarch'],
+['Vinícius Júnior','7','Forward','vinicius-paixao-de-oliveira-junior'],
+['Endrick','9','Forward','endrick'],
+['Kylian Mbappé','10','Forward','kylian-mbappe-lottin'],
+['Rodrygo','11','Forward','rodrygo-goes'],
+['Carlos Espí','19','Forward','carlos-espi'],
+['Brahim Díaz','21','Forward','brahim'],
+['Yan Diomande','25','Forward','yan-diomande']
 ];
+
+/* عکس‌های واقعی با پس‌زمینه روشن. اول آدرس‌های مشخص/منتشرشدهٔ تصویر، سپس جایگزین‌ها. */
+const playerImageSources = {
+  'Thibaut Courtois': [
+    'https://assets.laliga.com/squad/2026/t186/p60772/2048x2048/p60772_t186_2026_0_003_000.png',
+    'https://assets.laliga.com/squad/2025/t186/p60772/1024x1024/p60772_t186_2025_1_003_000.png'
+  ],
+  'Andriy Lunin': [
+    'https://assets.laliga.com/squad/2025/t186/p224965/2048x2048/p224965_t186_2025_1_003_000.png',
+    'https://img.uefa.com/imgml/TP/players/1/2025/cutoff/250089824.png'
+  ],
+  'Raúl Asencio': ['https://assets.laliga.com/squad/2026/t186/p551497/2048x2225/p551497_t186_2026_0_001_000.png'],
+  'Éder Militão': ['https://assets.laliga.com/squad/2025/t186/p218449/2048x2048/p218449_t186_2025_1_003_000.png'],
+  'Dean Huijsen': ['https://assets.laliga.com/squad/2025/t186/p554605/2048x2048/p554605_t186_2025_1_003_000.png'],
+  'Trent Alexander-Arnold': ['https://assets.laliga.com/squad/2026/t186/p169187/2048x2048/p169187_t186_2026_0_002_000.jpg'],
+  'Ibrahima Konaté': [
+    'https://assets.realmadrid.com/is/image/realmadrid/konate_550_650_2?%24Mobile%24=&fit=wrap&wid=600',
+    'https://publish.realmadrid.com/content/dam/portals/realmadrid-com/es-es/sports/football/3kq9cckrnlogidldtdie2fkbl/players/ibrahima-konate/assets/KONATE_EQUIPO_CARITA_550X650_26-27.png'
+  ],
+  'Marc Cucurella': [
+    'https://assets.realmadrid.com/is/image/realmadrid/CUCURELLA_EQUIPO_CARITA_550X650%20%E2%80%93%202?%24Desktop%24=&fit=wrap&wid=600',
+    'https://publish.realmadrid.com/content/dam/portals/realmadrid-com/es-es/sports/football/3kq9cckrnlogidldtdie2fkbl/players/marc-cucurella/assets/CUCURELLA_EQUIPO_CARITA_550X650_26-27.png'
+  ],
+  'Álvaro Carreras': [
+    'https://assets.bundesliga.com/player/dfl-obj-j024km-dfl-clu-j0005n-dfl-sea-0001k9.png',
+    'https://assets.realmadrid.com/is/image/realmadrid/CARRERAS_EQUIPO_CARITA_550X650?%24Desktop%24=&fit=wrap&wid=600'
+  ],
+  'Antonio Rüdiger': ['https://assets.laliga.com/squad/2026/t186/p102380/2048x2048/p102380_t186_2026_0_002_000.jpg'],
+  'Ferland Mendy': ['https://assets.laliga.com/squad/2025/t186/p206255/1024x1024/p206255_t186_2025_1_003_000.png'],
+  'Denzel Dumfries': [
+    'https://assets.realmadrid.com/is/image/realmadrid/DUMFRIES_EQUIPO_CARITA_550X650%20%E2%80%93%201?%24Mobile%24=&fit=wrap&wid=600',
+    'https://assets.realmadrid.com/is/image/realmadrid/DUMFRIES_EQUIPO_CARITA_550X650_26-27?%24Desktop%24=&fit=wrap&wid=600',
+    'https://publish.realmadrid.com/content/dam/portals/realmadrid-com/es-es/sports/football/3kq9cckrnlogidldtdie2fkbl/players/denzel-dumfries/assets/DUMFRIES_EQUIPO_CARITA_550X650_26-27.png'
+  ],
+  'Jude Bellingham': [
+    'https://assets.realmadrid.com/is/image/realmadrid/BELLINGHAM_EQUIPO_CARITA_550X650%20%E2%80%93%201?%24Mobile%24=&fit=wrap&wid=600',
+    'https://assets.laliga.com/squad/2026/t186/p244855/2048x2225/p244855_t186_2026_0_001_000.png'
+  ],
+  'Eduardo Camavinga': ['https://assets.laliga.com/squad/2026/t186/p475561/2048x2048/p475561_t186_2026_0_003_000.png'],
+  'Federico Valverde': ['https://assets.laliga.com/squad/2025/t186/p223255/1024x1024/p223255_t186_2025_1_003_000.png'],
+  'Aurélien Tchouaméni': ['https://assets.laliga.com/squad/2025/t186/p219292/512x512/p219292_t186_2025_1_003_000.png'],
+  'Arda Güler': [
+    'https://publish.realmadrid.com/content/dam/portals/realmadrid-com/es-es/sports/football/3kq9cckrnlogidldtdie2fkbl/players/arda-guler/assets/ARDA_EQUIPO_CARITA_550X650_26-27.png',
+    'https://assets.realmadrid.com/is/image/realmadrid/ARDA_EQUIPO_CARITA_550X650_26-27?%24Desktop%24=&fit=wrap&wid=600'
+  ],
+  'Bernardo Silva': [
+    'https://assets.analiticafantasy.com/jugadores/636.png?height=500&v=28&width=500',
+    'https://assets.realmadrid.com/is/image/realmadrid/BERNARDO%20SILVA_EQUIPO_CARITA_550X650%20%E2%80%93%202?%24Desktop%24=&fit=wrap&wid=600'
+  ],
+  'Thiago Pitarch': ['https://assets.laliga.com/squad/2025/t186/p657962/2048x2048/p657962_t186_2025_1_002_000.jpg'],
+  'Vinícius Júnior': ['https://assets.laliga.com/squad/2026/t186/p246333/512x512/p246333_t186_2026_0_003_000.png'],
+  'Endrick': ['https://assets.laliga.com/squad/2025/t186/p577107/2048x2048/p577107_t186_2025_1_003_000.png'],
+  'Kylian Mbappé': ['https://assets.laliga.com/squad/2025/t186/p220160/1024x1024/p220160_t186_2025_1_003_000.png'],
+  'Rodrygo': [
+    'https://assets.realmadrid.com/is/image/realmadrid/RODRYGO_EQUIPO_CARITA_550X650%20%E2%80%93%201_v2?%24Mobile%24=&fit=wrap&wid=600',
+    'https://assets.realmadrid.com/is/image/realmadrid/RODRYGO_EQUIPO_CARITA_550X650_26-27?%24Desktop%24=&fit=wrap&wid=600'
+  ],
+  'Carlos Espí': [
+    'https://assets.realmadrid.com/is/image/realmadrid/ESPI_EQUIPO_CARITA_550X650?%24Desktop%24=&fit=wrap&wid=600',
+    'https://assets.realmadrid.com/is/image/realmadrid/ESPI_EQUIPO_CARITA_550X650_26-27?%24Desktop%24=&fit=wrap&wid=600'
+  ],
+  'Brahim Díaz': ['https://assets.laliga.com/squad/2025/t186/p216183/512x512/p216183_t186_2025_1_003_000.png'],
+  'Yan Diomande': [
+    'https://assets.realmadrid.com/is/image/realmadrid/DIAMANDE_EQUIPO_CARITA_550X650%20%E2%80%93%202?%24Desktop%24=&fit=wrap&wid=600',
+    'https://assets.realmadrid.com/is/image/realmadrid/DIOMANDE_EQUIPO_CARITA_550X650_26-27?%24Desktop%24=&fit=wrap&wid=600',
+    'https://img.rbleipzig.com/f_auto/live/Yan-Diomande-avatar_1755785205481.jpg'
+  ]
+};
+function playerInitials(name){
+  return String(name).normalize('NFD').replace(/[\u0300-\u036f]/g,'').split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+}
+function playerTextFallback(name){
+  return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 320"><rect width="300" height="320" fill="#fff"/><circle cx="150" cy="86" r="44" fill="#e6ebf2"/><path d="M57 270c6-80 41-126 93-126s87 46 93 126" fill="#f7f9fc" stroke="#c7d2e0" stroke-width="3"/><text x="150" y="304" text-anchor="middle" font-size="21" font-family="Arial,sans-serif" font-weight="bold" fill="#304766">${playerInitials(name)}</text></svg>`);
+}
 const pg=document.getElementById('playerGallery');
-if(pg){playerPhotos.forEach(([name,num,pos,slug,img])=>{const a=document.createElement('a');a.className='player-card';a.href='https://www.realmadrid.com/en-US/football/first-team/players/'+slug;a.target='_blank';a.rel='noopener';const photo=document.createElement('div');photo.className='player-photo';const im=document.createElement('img');im.src='https://assets.realmadrid.com/is/image/realmadrid/'+img+'?$Desktop$=&fit=wrap&wid=420';im.alt='عکس '+name;im.loading='lazy';im.onerror=()=>{im.onerror=null;im.src=RM;im.style.objectFit='contain';im.style.padding='28px'};photo.appendChild(im);const meta=document.createElement('div');meta.className='player-meta';meta.innerHTML='<strong>'+name+'</strong><small>'+num+' · '+pos+'</small>';a.append(photo,meta);pg.appendChild(a);});}
+if(pg){
+  playerPhotos.forEach(([name,num,pos,slug])=>{
+    const a=document.createElement('a');a.className='player-card';
+    a.href='https://www.realmadrid.com/en-US/football/first-team/players/'+slug;
+    a.target='_blank';a.rel='noopener';
+    const photo=document.createElement('div');photo.className='player-photo';
+    const im=document.createElement('img');im.alt='عکس '+name;im.loading='lazy';im.decoding='async';
+    const sources=[...(playerImageSources[name]||[])];let sourceIndex=0;
+    const tryNext=()=>{
+      if(sourceIndex<sources.length){im.src=sources[sourceIndex++];return;}
+      im.onerror=null;im.src=playerTextFallback(name);im.alt='نشان جایگزین '+name;
+    };
+    im.onerror=tryNext;tryNext();photo.appendChild(im);
+    const meta=document.createElement('div');meta.className='player-meta';
+    const strong=document.createElement('strong');strong.textContent=name;
+    const small=document.createElement('small');small.textContent=num+' · '+pos;
+    meta.append(strong,small);a.append(photo,meta);pg.appendChild(a);
+  });
+}
 
 const clubs=[
-['رئال مادرید','Real Madrid',RM],['بارسلونا','Barcelona','https://upload.wikimedia.org/wikipedia/en/f/fc/FC_Barcelona_%28crest%29.svg'],['اتلتیکو مادرید','Atlético Madrid','https://upload.wikimedia.org/wikipedia/en/f/f4/Atletico_Madrid_2017_logo.svg'],['منچسترسیتی','Manchester City','https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg'],['منچستریونایتد','Manchester United','https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg'],['لیورپول','Liverpool','https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg'],['آرسنال','Arsenal','https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg'],['چلسی','Chelsea','https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg'],['تاتنهام','Tottenham','https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg'],['بایرن مونیخ','Bayern Munich','https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg'],['بوروسیا دورتموند','Borussia Dortmund','https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg'],['پاری‌سن‌ژرمن','Paris Saint-Germain','https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg'],['اینتر','Inter','https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg'],['آث میلان','AC Milan','https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_of_AC_Milan.svg'],['یوونتوس','Juventus','https://upload.wikimedia.org/wikipedia/commons/1/15/Juventus_FC_2017_logo.svg'],['لایپزیگ','RB Leipzig','https://upload.wikimedia.org/wikipedia/en/0/04/RB_Leipzig_2014_logo.svg'],['والنسیا','Valencia','https://upload.wikimedia.org/wikipedia/en/c/ce/Valenciacf.svg'],['سویا','Sevilla','https://upload.wikimedia.org/wikipedia/en/3/3b/Sevilla_FC_logo.svg'],['آژاکس','Ajax','https://upload.wikimedia.org/wikipedia/en/7/79/Ajax_Amsterdam.svg'],['بنفیکا','Benfica','https://upload.wikimedia.org/wikipedia/en/a/a2/SL_Benfica_logo.svg'],['پورتو','Porto','https://upload.wikimedia.org/wikipedia/en/f/f1/FC_Porto.svg'],['سلتاویگو','Celta Vigo','https://upload.wikimedia.org/wikipedia/en/1/12/RC_Celta_de_Vigo_logo.svg'],['الهلال','Al Hilal','https://upload.wikimedia.org/wikipedia/en/5/59/Al_Hilal_SFC_Logo.svg'],['النصر','Al Nassr','https://upload.wikimedia.org/wikipedia/en/0/0d/Al-Nassr_FC_Logo.svg'],['اینتر میامی','Inter Miami','https://upload.wikimedia.org/wikipedia/en/4/44/Inter_Miami_CF_logo.svg'],['فلامینگو','Flamengo','https://upload.wikimedia.org/wikipedia/en/2/2e/Clube_de_Regatas_do_Flamengo_logo.svg'],['بوکاجونیورز','Boca Juniors','https://upload.wikimedia.org/wikipedia/commons/8/83/Boca_Juniors_logo18.svg'],['فنرباغچه','Fenerbahçe','https://upload.wikimedia.org/wikipedia/en/3/39/Fenerbah%C3%A7e.svg'],['گالاتاسرای','Galatasaray','https://upload.wikimedia.org/wikipedia/commons/2/20/Galatasaray_Sports_Club_Logo.png'],['آرسنال','Arsenal','https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg'],['AEK آتن','AEK Athens','https://upload.wikimedia.org/wikipedia/en/8/8e/AEK_Athens_FC_logo.svg'],['PSV','PSV Eindhoven','https://upload.wikimedia.org/wikipedia/en/0/05/PSV_Eindhoven.svg']];
+['رئال مادرید','Real Madrid',RM],['بارسلونا','Barcelona','https://upload.wikimedia.org/wikipedia/en/f/fc/FC_Barcelona_%28crest%29.svg'],['اتلتیکو مادرید','Atlético Madrid','https://upload.wikimedia.org/wikipedia/en/f/f4/Atletico_Madrid_2017_logo.svg'],['منچسترسیتی','Manchester City','https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg'],['منچستریونایتد','Manchester United','https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg'],['لیورپول','Liverpool','https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg'],['آرسنال','Arsenal','https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg'],['چلسی','Chelsea','https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg'],['تاتنهام','Tottenham','https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg'],['بایرن مونیخ','Bayern Munich','https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg'],['بوروسیا دورتموند','Borussia Dortmund','https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg'],['پاری‌سن‌ژرمن','Paris Saint-Germain','https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg'],['اینتر','Inter','https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg'],['آث میلان','AC Milan','https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_of_AC_Milan.svg'],['یوونتوس','Juventus','https://upload.wikimedia.org/wikipedia/commons/1/15/Juventus_FC_2017_logo.svg'],['لایپزیگ','RB Leipzig','https://upload.wikimedia.org/wikipedia/en/0/04/RB_Leipzig_2014_logo.svg'],['والنسیا','Valencia','https://upload.wikimedia.org/wikipedia/en/c/ce/Valenciacf.svg'],['سویا','Sevilla','https://upload.wikimedia.org/wikipedia/en/3/3b/Sevilla_FC_logo.svg'],['آژاکس','Ajax','https://upload.wikimedia.org/wikipedia/en/7/79/Ajax_Amsterdam.svg'],['بنفیکا','Benfica','https://upload.wikimedia.org/wikipedia/en/a/a2/SL_Benfica_logo.svg'],['پورتو','Porto','https://upload.wikimedia.org/wikipedia/en/f/f1/FC_Porto.svg'],['سلتاویگو','Celta Vigo','https://upload.wikimedia.org/wikipedia/en/1/12/RC_Celta_de_Vigo_logo.svg'],['الهلال','Al Hilal','https://upload.wikimedia.org/wikipedia/en/5/59/Al_Hilal_SFC_Logo.svg'],['النصر','Al Nassr','https://upload.wikimedia.org/wikipedia/en/0/0d/Al-Nassr_FC_Logo.svg'],['اینتر میامی','Inter Miami','https://upload.wikimedia.org/wikipedia/en/4/44/Inter_Miami_CF_logo.svg'],['فلامینگو','Flamengo','https://upload.wikimedia.org/wikipedia/en/2/2e/Clube_de_Regatas_do_Flamengo_logo.svg'],['بوکاجونیورز','Boca Juniors','https://upload.wikimedia.org/wikipedia/commons/8/83/Boca_Juniors_logo18.svg'],['فنرباغچه','Fenerbahçe','https://upload.wikimedia.org/wikipedia/en/3/39/Fenerbah%C3%A7e.svg'],['گالاتاسرای','Galatasaray','https://upload.wikimedia.org/wikipedia/commons/2/20/Galatasaray_Sports_Club_Logo.png'],['AEK آتن','AEK Athens','https://upload.wikimedia.org/wikipedia/en/8/8e/AEK_Athens_FC_logo.svg'],['PSV','PSV Eindhoven','https://upload.wikimedia.org/wikipedia/en/0/05/PSV_Eindhoven.svg']];
+const preferredClubLogos={
+ 'Real Madrid':'https://crests.football-data.org/86.png','Barcelona':'https://crests.football-data.org/81.png','Atlético Madrid':'https://crests.football-data.org/78.png',
+ 'Manchester City':'https://crests.football-data.org/65.png','Manchester United':'https://crests.football-data.org/66.png','Liverpool':'https://crests.football-data.org/64.png',
+ 'Arsenal':'https://crests.football-data.org/57.png','Chelsea':'https://crests.football-data.org/61.png','Tottenham':'https://crests.football-data.org/73.png',
+ 'Bayern Munich':'https://crests.football-data.org/5.png','Borussia Dortmund':'https://crests.football-data.org/4.png','Paris Saint-Germain':'https://crests.football-data.org/524.png',
+ 'Inter':'https://crests.football-data.org/108.png','AC Milan':'https://crests.football-data.org/98.png','Juventus':'https://crests.football-data.org/109.png',
+ 'RB Leipzig':'https://crests.football-data.org/721.png','Valencia':'https://crests.football-data.org/95.png','Sevilla':'https://crests.football-data.org/559.png',
+ 'Ajax':'https://crests.football-data.org/678.png','Benfica':'https://crests.football-data.org/1903.png','Porto':'https://crests.football-data.org/503.png','Celta Vigo':'https://crests.football-data.org/558.png'
+};
+clubs.forEach(c=>{if(preferredClubLogos[c[1]])c[2]=preferredClubLogos[c[1]];});
+
 const fixtures=[
 {date:'یکشنبه ۲۵ اکتبر ۲۰۲۶',time:'۲۱:۰۰',home:'بارسلونا',away:'رئال مادرید',en:'FC Barcelona vs Real Madrid',comp:'لالیگا · هفتهٔ ۱۰',homeLogo:clubs[1][2],awayLogo:RM},
 {date:'یکشنبه ۱ نوامبر ۲۰۲۶',time:'۱۶:۱۵',home:'رئال ریسینگ',away:'رئال مادرید',en:'Racing de Santander vs Real Madrid',comp:'لالیگا',homeLogo:'https://upload.wikimedia.org/wikipedia/en/1/1f/Racing_de_Santander_logo.svg',awayLogo:RM},
@@ -79,12 +182,175 @@ const fixtures=[
 {date:'سه‌شنبه ۲۴ نوامبر ۲۰۲۶',time:'۲۱:۰۰',home:'رئال مادرید',away:'PSV',en:'Real Madrid vs PSV Eindhoven',comp:'لیگ قهرمانان اروپا',homeLogo:RM,awayLogo:clubs[30][2]},
 {date:'چهارشنبه ۹ دسامبر ۲۰۲۶',time:'۲۱:۰۰',home:'آرسنال',away:'رئال مادرید',en:'Arsenal vs Real Madrid',comp:'لیگ قهرمانان اروپا',homeLogo:clubs[6][2],awayLogo:RM}
 ];
-function fallback(name){return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#e9bd54" stroke-width="4"/><text x="50" y="57" font-size="15" text-anchor="middle" fill="#10264a" font-family="Arial">${String(name).replace(/[<>&]/g,'').slice(0,9)}</text></svg>`)}
-function img(src,name,cls=''){return `<img class="${cls}" src="${src}" alt="لوگوی ${name}" loading="lazy" onerror="this.onerror=null;this.src='${fallback(name)}'">`}
+const requestedClubLogoAlternates={
+ 'رئال مادرید':['https://crests.football-data.org/86.png','https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg'],
+ 'Real Madrid':['https://crests.football-data.org/86.png','https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg'],
+ 'بارسلونا':['https://crests.football-data.org/81.png','https://upload.wikimedia.org/wikipedia/en/f/fc/FC_Barcelona_%28crest%29.svg'],
+ 'Barcelona':['https://crests.football-data.org/81.png','https://upload.wikimedia.org/wikipedia/en/f/fc/FC_Barcelona_%28crest%29.svg'],
+ 'اتلتیکو مادرید':['https://crests.football-data.org/78.png','https://upload.wikimedia.org/wikipedia/en/f/f4/Atletico_Madrid_2017_logo.svg'],
+ 'Atlético Madrid':['https://crests.football-data.org/78.png','https://upload.wikimedia.org/wikipedia/en/f/f4/Atletico_Madrid_2017_logo.svg'],
+ 'منچسترسیتی':['https://crests.football-data.org/65.png','https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg'],
+ 'Manchester City':['https://crests.football-data.org/65.png','https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg'],
+ 'منچستریونایتد':['https://crests.football-data.org/66.png','https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg'],
+ 'Manchester United':['https://crests.football-data.org/66.png','https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg'],
+ 'لیورپول':['https://crests.football-data.org/64.png','https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg'],
+ 'Liverpool':['https://crests.football-data.org/64.png','https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg'],
+ 'آرسنال':['https://crests.football-data.org/57.png','https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg'],
+ 'Arsenal':['https://crests.football-data.org/57.png','https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg'],
+ 'چلسی':['https://crests.football-data.org/61.png','https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg'],
+ 'Chelsea':['https://crests.football-data.org/61.png','https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg'],
+ 'تاتنهام':['https://crests.football-data.org/73.png','https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg'],
+ 'Tottenham':['https://crests.football-data.org/73.png','https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg'],
+ 'بایرن مونیخ':['https://crests.football-data.org/5.png','https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg'],
+ 'Bayern Munich':['https://crests.football-data.org/5.png','https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_Munich_logo_%282017%29.svg'],
+ 'بوروسیا دورتموند':['https://crests.football-data.org/4.png','https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg'],
+ 'Borussia Dortmund':['https://crests.football-data.org/4.png','https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg'],
+ 'پاری‌سن‌ژرمن':['https://crests.football-data.org/524.png','https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg'],
+ 'Paris Saint-Germain':['https://crests.football-data.org/524.png','https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg'],
+ 'اینتر':['https://crests.football-data.org/108.png','https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg'],
+ 'Inter':['https://crests.football-data.org/108.png','https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg'],
+ 'آث میلان':['https://crests.football-data.org/98.png','https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_of_AC_Milan.svg'],
+ 'AC Milan':['https://crests.football-data.org/98.png','https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_of_AC_Milan.svg'],
+ 'یوونتوس':['https://crests.football-data.org/109.png','https://upload.wikimedia.org/wikipedia/commons/1/15/Juventus_FC_2017_logo.svg'],
+ 'Juventus':['https://crests.football-data.org/109.png','https://upload.wikimedia.org/wikipedia/commons/1/15/Juventus_FC_2017_logo.svg'],
+ 'لایپزیگ':['https://crests.football-data.org/721.png','https://upload.wikimedia.org/wikipedia/en/0/04/RB_Leipzig_2014_logo.svg'],
+ 'RB Leipzig':['https://crests.football-data.org/721.png','https://upload.wikimedia.org/wikipedia/en/0/04/RB_Leipzig_2014_logo.svg'],
+ 'والنسیا':['https://crests.football-data.org/95.png','https://upload.wikimedia.org/wikipedia/en/c/ce/Valenciacf.svg'],
+ 'Valencia':['https://crests.football-data.org/95.png','https://upload.wikimedia.org/wikipedia/en/c/ce/Valenciacf.svg'],
+ 'سویا':['https://crests.football-data.org/559.png','https://upload.wikimedia.org/wikipedia/en/3/3b/Sevilla_FC_logo.svg'],
+ 'Sevilla':['https://crests.football-data.org/559.png','https://upload.wikimedia.org/wikipedia/en/3/3b/Sevilla_FC_logo.svg'],
+ 'آژاکس':['https://crests.football-data.org/678.png','https://upload.wikimedia.org/wikipedia/en/7/79/Ajax_Amsterdam.svg'],
+ 'Ajax':['https://crests.football-data.org/678.png','https://upload.wikimedia.org/wikipedia/en/7/79/Ajax_Amsterdam.svg'],
+ 'بنفیکا':['https://crests.football-data.org/1903.png','https://upload.wikimedia.org/wikipedia/en/a/a2/SL_Benfica_logo.svg'],
+ 'Benfica':['https://crests.football-data.org/1903.png','https://upload.wikimedia.org/wikipedia/en/a/a2/SL_Benfica_logo.svg'],
+ 'پورتو':['https://crests.football-data.org/503.png','https://upload.wikimedia.org/wikipedia/en/f/f1/FC_Porto.svg'],
+ 'Porto':['https://crests.football-data.org/503.png','https://upload.wikimedia.org/wikipedia/en/f/f1/FC_Porto.svg'],
+ 'سلتاویگو':['https://crests.football-data.org/558.png','https://upload.wikimedia.org/wikipedia/en/1/12/RC_Celta_de_Vigo_logo.svg'],
+ 'Celta Vigo':['https://crests.football-data.org/558.png','https://upload.wikimedia.org/wikipedia/en/1/12/RC_Celta_de_Vigo_logo.svg'],
+ 'الهلال':['https://storage.googleapis.com/evento_bucket/logo/6220e010-a498-11ee-b0b3-850fdbb6a7fa.png','https://upload.wikimedia.org/wikipedia/en/5/59/Al_Hilal_SFC_Logo.svg'],
+ 'Al Hilal':['https://storage.googleapis.com/evento_bucket/logo/6220e010-a498-11ee-b0b3-850fdbb6a7fa.png','https://upload.wikimedia.org/wikipedia/en/5/59/Al_Hilal_SFC_Logo.svg'],
+ 'النصر':['https://upload.wikimedia.org/wikipedia/commons/5/5f/Nassr_FC_Logo.svg','https://upload.wikimedia.org/wikipedia/en/0/0d/Al-Nassr_FC_Logo.svg'],
+ 'Al Nassr':['https://upload.wikimedia.org/wikipedia/commons/5/5f/Nassr_FC_Logo.svg','https://upload.wikimedia.org/wikipedia/en/0/0d/Al-Nassr_FC_Logo.svg'],
+ 'اینتر میامی':['https://www.oursportscentral.com/graphics/teams/mls_miami_internacionalefc19.png','https://upload.wikimedia.org/wikipedia/en/4/44/Inter_Miami_CF_logo.svg'],
+ 'Inter Miami':['https://www.oursportscentral.com/graphics/teams/mls_miami_internacionalefc19.png','https://upload.wikimedia.org/wikipedia/en/4/44/Inter_Miami_CF_logo.svg'],
+ 'فلامینگو':['https://upload.wikimedia.org/wikipedia/en/2/2e/Clube_de_Regatas_do_Flamengo_logo.svg'],
+ 'Flamengo':['https://upload.wikimedia.org/wikipedia/en/2/2e/Clube_de_Regatas_do_Flamengo_logo.svg','https://upload.wikimedia.org/wikipedia/commons/2/2e/Clube_de_Regatas_do_Flamengo_logo.svg'],
+ 'بوکاجونیورز':['https://upload.wikimedia.org/wikipedia/commons/8/83/Boca_Juniors_logo18.svg'],
+ 'Boca Juniors':['https://upload.wikimedia.org/wikipedia/commons/8/83/Boca_Juniors_logo18.svg','https://upload.wikimedia.org/wikipedia/en/4/41/CABJ70.png'],
+ 'فنرباغچه':['https://upload.wikimedia.org/wikipedia/en/3/39/Fenerbah%C3%A7e.svg'],
+ 'Fenerbahçe':['https://upload.wikimedia.org/wikipedia/en/3/39/Fenerbah%C3%A7e.svg','https://upload.wikimedia.org/wikipedia/commons/8/8f/Fenerbah%C3%A7e_SK.svg'],
+ 'گالاتاسرای':['https://upload.wikimedia.org/wikipedia/commons/2/20/Galatasaray_Sports_Club_Logo.png'],
+ 'Galatasaray':['https://upload.wikimedia.org/wikipedia/commons/2/20/Galatasaray_Sports_Club_Logo.png','https://upload.wikimedia.org/wikipedia/en/8/86/Galatasaray_Sports_Club_Logo.png'],
+ 'AEK آتن':['https://upload.wikimedia.org/wikipedia/en/8/8e/AEK_Athens_FC_logo.svg'],
+ 'AEK Athens':['https://upload.wikimedia.org/wikipedia/en/8/8e/AEK_Athens_FC_logo.svg'],
+ 'PSV':['https://upload.wikimedia.org/wikipedia/en/0/05/PSV_Eindhoven.svg'],
+ 'PSV Eindhoven':['https://upload.wikimedia.org/wikipedia/en/0/05/PSV_Eindhoven.svg']
+};
+function clubInitials(name){
+  const clean=String(name).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z\u0600-\u06FF0-9 ]/g,' ').trim().split(/\s+/).filter(Boolean);
+  return clean.length>1?(clean[0][0]+clean[1][0]).toUpperCase():((clean[0]||'FC').slice(0,3).toUpperCase());
+}
+function clubFallback(name){return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#e9bd54" stroke-width="4"/><text x="50" y="58" font-size="24" font-weight="bold" text-anchor="middle" fill="#10264a" font-family="Arial,sans-serif">${clubInitials(name)}</text></svg>`)}
+function clubNorm(value){return String(value||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\u0600-\u06FF]+/g,' ').trim();}
+function clubSources(name,primary){
+  const normalized=clubNorm(name);
+  const direct=requestedClubLogoAlternates[name]||[];
+  const matchedKey=Object.keys(requestedClubLogoAlternates).find(k=>clubNorm(k)===normalized || (normalized.length>5 && (normalized.includes(clubNorm(k)) || clubNorm(k).includes(normalized))));
+  const aliases=matchedKey?(requestedClubLogoAlternates[matchedKey]||[]):[];
+  let original=[];
+  if(typeof clubs!=='undefined'){
+    const match=clubs.find(c=>clubNorm(c[0])===normalized||clubNorm(c[1])===normalized||((normalized.length>5)&&(normalized.includes(clubNorm(c[1]))||clubNorm(c[1]).includes(normalized))));
+    if(match&&match[2])original=[match[2]];
+  }
+  return [...new Set([primary,...direct,...aliases,...original].filter(Boolean))];
+}
+function logoFailed(im){
+  const pool=clubSources(im.dataset.logoName||im.alt.replace('لوگوی ',''),im.dataset.logoStart||im.src);
+  const next=Number(im.dataset.logoNext||1);
+  if(next<pool.length){im.dataset.logoNext=String(next+1);im.src=pool[next];return;}
+  im.onerror=null;im.src=clubFallback(im.dataset.logoName||im.alt.replace('لوگوی ',''));
+}
+function img(src,name,cls=''){
+  const safeName=String(name).replace(/["<>]/g,'');
+  const safeSrc=String(src||'').replace(/"/g,'%22');
+  return `<img class="${cls}" src="${safeSrc}" data-logo-name="${safeName}" data-logo-start="${safeSrc}" data-logo-next="1" alt="لوگوی ${safeName}" loading="lazy" referrerpolicy="no-referrer" onerror="logoFailed(this)">`;
+}
 function renderFixtures(){document.getElementById('fixtureGrid').innerHTML=fixtures.map(f=>`<article class="card"><div class="match-head"><span>${f.comp}</span><span>آینده</span></div><div class="teams"><div class="team">${img(f.homeLogo,f.home)}${f.home}</div><div class="vs">VS</div><div class="team">${img(f.awayLogo,f.away)}${f.away}</div></div><div class="match-date">📅 ${f.date}<br>🕘 ساعت ${f.time} (اروپای مرکزی)</div></article>`).join('')}
-function renderClubs(q=''){const list=clubs.filter(c=>(c[0]+' '+c[1]).toLowerCase().includes(q.toLowerCase()));document.getElementById('clubGrid').innerHTML=list.map(c=>`<div class="club">${img(c[2],c[0])}<span>${c[0]}</span></div>`).join('')||'<div class="empty">باشگاهی پیدا نشد.</div>'}
+function renderClubs(q=''){
+  const list=clubs.filter(c=>(c[0]+' '+c[1]).toLowerCase().includes(q.toLowerCase()));
+  const grid=document.getElementById('clubGrid');grid.innerHTML='';
+  if(!list.length){grid.innerHTML='<div class="empty">باشگاهی پیدا نشد.</div>';return;}
+  list.forEach(c=>{
+    const card=document.createElement('div');card.className='club';
+    const holder=document.createElement('div');holder.innerHTML=img(c[2],c[0]);
+    const im=holder.firstElementChild;im.style.width='54px';im.style.height='54px';im.style.objectFit='contain';im.style.background='#fff';im.style.borderRadius='50%';im.style.padding='5px';im.style.display='block';im.style.margin='0 auto 8px';
+    const label=document.createElement('span');label.textContent=c[0];
+    card.append(im,label);grid.appendChild(card);
+  });
+}
 function dateFmt(s){try{return new Date(s).toLocaleString('fa-IR',{dateStyle:'medium',timeStyle:'short'})}catch{return ''}}
 function renderResults(matches){const el=document.getElementById('resultGrid');if(!matches.length){el.innerHTML='<div class="empty">فعلاً نتیجه‌ای دریافت نشد؛ دوباره امتحان کن یا از لینک رسمی لالیگا استفاده کن.</div>';return}el.innerHTML=matches.map(m=>{const h=m.homeTeam||{},a=m.awayTeam||{},sc=m.score?.fullTime||{},hs=sc.home??'–',as=sc.away??'–';return `<div class="result"><div class="team">${img(h.crest||`https://crests.football-data.org/${h.id}.png`,h.name||'میزبان')}${h.name||'میزبان'}</div><div><div class="score">${hs} : ${as}</div><div class="match-head">${m.status==='FINISHED'?'پایان‌یافته':m.status==='IN_PLAY'?'زنده':m.status==='SCHEDULED'?'برنامه‌ریزی‌شده':m.status||''}</div></div><div class="team">${img(a.crest||`https://crests.football-data.org/${a.id}.png`,a.name||'میهمان')}${a.name||'میهمان'}</div><div class="match-head" style="grid-column:1/-1">${m.competition?.name||'مسابقات فوتبال'} · ${dateFmt(m.utcDate)}</div></div>`}).join('')}
-async function loadResults(){const st=document.getElementById('resultStatus'),el=document.getElementById('resultGrid');st.textContent='در حال دریافت…';el.innerHTML='<div class="empty">در حال تلاش برای دریافت نتیجه‌ها…</div>';try{const now=new Date(),from=new Date(now);from.setDate(from.getDate()-7);const to=new Date(now);to.setDate(to.getDate()+7);const fmt=d=>d.toISOString().slice(0,10);const url='https://real-madrid-scores.z-bagheritabar.workers.dev/?path=matches&competitions=PD,CL&dateFrom='+fmt(from)+'&dateTo='+fmt(to);const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('network');const data=await r.json();const all=Array.isArray(data.matches)?data.matches:(Array.isArray(data)?data:[]);const rm=all.filter(m=>/Real Madrid/i.test((m.homeTeam?.name||'')+' '+(m.awayTeam?.name||'')));renderResults(rm);st.textContent=rm.length?'به‌روز شد':'نتیجه‌ای در این بازه نیست'}catch(e){st.textContent='اتصال در دسترس نیست';el.innerHTML='<div class="empty">اتصال نتایج خودکار در دسترس نیست؛ برنامهٔ آینده و لینک‌های رسمی سایت همچنان قابل استفاده‌اند.</div>'}}
-renderFixtures();renderClubs();document.getElementById('clubSearch').addEventListener('input',e=>renderClubs(e.target.value));document.getElementById('clearSearch').onclick=()=>{document.getElementById('clubSearch').value='';renderClubs()};document.getElementById('refreshResults').onclick=loadResults;document.getElementById('themeBtn').onclick=()=>{document.body.classList.toggle('light');document.getElementById('themeBtn').textContent=document.body.classList.contains('light')?'☾ حالت شب':'☼ حالت روشن'};document.getElementById('languageBtn').onclick=()=>{toast('نسخهٔ فارسی فعال است؛ برای اخبار انگلیسی از پیوندهای رسمی استفاده کن.')};function toast(t){const el=document.getElementById('toast');el.textContent=t;el.style.display='block';setTimeout(()=>el.style.display='none',4000)}
+let resultsRequestRunning=false;
+async function loadResults(){
+  if(resultsRequestRunning)return;
+  resultsRequestRunning=true;
+  const st=document.getElementById('resultStatus');
+  const el=document.getElementById('resultGrid');
+  const button=document.getElementById('refreshResults');
+  const originalButtonText=button.textContent;
+  const hadResults=!!el.querySelector('.result');
+  st.textContent='در حال دریافت نتایج واقعی…';
+  button.disabled=true;button.textContent='در حال بررسی…';
+  if(!hadResults)el.innerHTML='<div class="empty">در حال دریافت نتایج واقعی…</div>';
+  try{
+    // سرویس بازه‌های حداکثر ۱۰روزه می‌پذیرد؛ هر درخواست اینجا فقط ۸ روز اختلاف دارد.
+    const start=new Date();start.setUTCHours(12,0,0,0);start.setUTCDate(start.getUTCDate()-7);
+    const end=new Date();end.setUTCHours(12,0,0,0);end.setUTCDate(end.getUTCDate()+7);
+    const fmt=d=>d.toISOString().slice(0,10);
+    const allMatches=[];const errors=[];let successfulRequests=0;
+    let cursor=new Date(start);
+    while(cursor<=end){
+      const chunkStart=new Date(cursor);const chunkEnd=new Date(cursor);
+      chunkEnd.setUTCDate(chunkEnd.getUTCDate()+8);
+      if(chunkEnd>end)chunkEnd.setTime(end.getTime());
+      const url='https://real-madrid-scores.z-bagheritabar.workers.dev/?path=matches&competitions=PD,CL&dateFrom='+fmt(chunkStart)+'&dateTo='+fmt(chunkEnd);
+      try{
+        const response=await fetch(url,{cache:'no-store'});
+        let data={};try{data=await response.json();}catch(_){data={};}
+        if(!response.ok)throw new Error(data.message||data.error||('HTTP '+response.status));
+        if(data&&data.message&&!Array.isArray(data.matches))throw new Error(data.message);
+        const matches=Array.isArray(data.matches)?data.matches:(Array.isArray(data)?data:[]);
+        allMatches.push(...matches);successfulRequests++;
+      }catch(chunkError){errors.push((chunkError&&chunkError.message)?String(chunkError.message):'خطای اتصال');}
+      cursor=new Date(chunkEnd);cursor.setUTCDate(cursor.getUTCDate()+1);
+    }
+    if(successfulRequests===0)throw new Error(errors[0]||'اتصال ناموفق بود');
+    const seen=new Set();
+    const uniqueMatches=allMatches.filter(m=>{
+      const key=m.id!=null?String(m.id):[m.utcDate,m.homeTeam?.name,m.awayTeam?.name].join('|');
+      if(seen.has(key))return false;seen.add(key);return true;
+    });
+    const realMatches=uniqueMatches.filter(m=>/Real Madrid/i.test((m.homeTeam?.name||'')+' '+(m.awayTeam?.name||''))).sort((a,b)=>new Date(a.utcDate||0)-new Date(b.utcDate||0));
+    renderResults(realMatches);
+    const checkedAt=new Date().toLocaleTimeString('fa-IR',{hour:'2-digit',minute:'2-digit'});
+    if(errors.length)st.textContent='بخشی از نتایج دریافت شد · '+checkedAt;
+    else st.textContent=realMatches.length?'به‌روزرسانی شد · '+checkedAt:'در این بازه مسابقه‌ای پیدا نشد · '+checkedAt;
+  }catch(error){
+    st.textContent='دریافت نتایج ناموفق بود';
+    if(!hadResults){
+      const msg=(error&&error.message)?String(error.message):'خطای اتصال';
+      el.innerHTML='<div class="empty">نتایج واقعی دریافت نشدند. اتصال سرویس نتایج را بررسی کن. ('+msg.replace(/[<>&"']/g,'')+')</div>';
+    }
+  }finally{
+    button.disabled=false;button.textContent=originalButtonText;resultsRequestRunning=false;
+  }
+}
+renderFixtures();renderClubs();
+document.getElementById('clubSearch').addEventListener('input',e=>renderClubs(e.target.value));
+document.getElementById('clearSearch').onclick=()=>{document.getElementById('clubSearch').value='';renderClubs()};
+document.getElementById('refreshResults').onclick=loadResults;
+document.getElementById('themeBtn').onclick=()=>{document.body.classList.toggle('light');document.getElementById('themeBtn').textContent=document.body.classList.contains('light')?'☾ حالت شب':'☼ حالت روشن'};
+document.getElementById('languageBtn').onclick=()=>{toast('نسخهٔ فارسی فعال است؛ برای اخبار انگلیسی از پیوندهای رسمی استفاده کن.')};
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.style.display='block';setTimeout(()=>el.style.display='none',4000)}
+loadResults();setInterval(()=>{if(!document.hidden)loadResults();},5*60*1000);
 </script></body></html>
